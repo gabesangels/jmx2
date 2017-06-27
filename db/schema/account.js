@@ -5,6 +5,8 @@ var Promise = require('bluebird');
 var accountSchema = mongoose.Schema({
   username: { type: String, required: true, index: { unique: true } },
   password: { type: String, required: true },
+  age: { type: Number, required: true },
+  gender: { type: String, required: true },
   watched: [],
   toWatch: [Object]
 });

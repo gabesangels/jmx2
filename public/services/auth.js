@@ -21,13 +21,15 @@ angular.module('main-app')
     });
   };
 
-  var signup = function(username, password, callback) {
+  var signup = function(username, password, age, gender, callback) {
     $http({
       url: `${storeURL}/signup`,
       method: 'POST',
       data: {
         username: username,
-        password: password
+        password: password,
+        age: age,
+        gender: gender
       }
     })
     .then(function() {

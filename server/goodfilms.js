@@ -64,6 +64,8 @@ app.get('/logout', function (req, res) {
 app.post('/signup', function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
+  var age = req.body.age;
+  var gender = req.body.gender;
 
   accounts.findOne(username, (err, user) => {
     if (err) throw err;
@@ -71,7 +73,7 @@ app.post('/signup', function (req, res) {
       console.log('Username already exists!');
       // res.redirect('/signup');
     } else {
-      accounts.insertOne({username: username, password: password}, (err, user) => {
+      accounts.insertOne({username: username, password: password, age: age, gender: gender}, (err, user) => {
         if (err) throw err;
         console.log('Account created.');
         res.redirect('/user');

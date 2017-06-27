@@ -1,11 +1,14 @@
 angular.module('main-app')
 
 .controller('SearchController', function(searchTheMovieDB, searchOMDB) {
+
+  this.selection = '';
+
   this.results = []
   this.TMDBservice = searchTheMovieDB;
   this.OMDBService = searchOMDB;
   this.handleClick = () => {
-    this.TMDBservice.search(this.input, (data) => {
+    this.TMDBservice.search(this.input, this.selection, (data) => {
       this.results = data.results.slice(0,5)
       this.results.map(item => {
         if (item.poster_path === null) {

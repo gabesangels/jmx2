@@ -2,7 +2,7 @@ angular.module('main-app')
 
 .factory('AuthModel', function($http, $location) {
   var storeURL = 'http://localhost:3000'; //<-- fix this *should be fixed* -JO
-  var signin = function(username, password, callback) {
+  var signin = function(username, password, age, gender, callback) {
     $http({
       url: `${storeURL}/signin`,
       method: 'POST',
@@ -12,7 +12,7 @@ angular.module('main-app')
       }
     })
     .then(function(res) {
-      // console.log('signed in');
+      console.log('signed in');
       callback(null, res.data.apiToken);
       $location.path('/user');
     })

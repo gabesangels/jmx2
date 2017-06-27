@@ -13,7 +13,7 @@ angular.module('main-app')
 
     this.intendedUser = session;
     this.user.username = this.intendedUser.data.username;
-    this.user.watched = this.intendedUser.data.watched;
+    this.user.movies = this.intendedUser.data.movies;
 
     // Creates the recomendations
     // please fix this -MN

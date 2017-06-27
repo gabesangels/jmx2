@@ -1,5 +1,9 @@
 <div class="search-bar form-inline">
-  <div class="search-text"> Add a movie</div>
+  <div class="search-text"> Search films and TV</div>
+  <select name="type" ng-model="ctrl.selection">
+    <option value="movie">Movies</option>
+    <option value="tv">TV Shows</option>
+  </select>
   <input
     ng-model="ctrl.input"
     class="form-control"

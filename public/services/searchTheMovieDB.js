@@ -11,9 +11,9 @@ angular.module('main-app')
   var API_KEYS = '4d3017fc8de9100e02bc619b7791f472'
 
   // this is used to query search
-  this.search = function(query, callback) {
+  this.search = function(query, selection, callback) {
     $http({
-    url: 'https://api.themoviedb.org/3/search/movie?include_adult=false&api_key=' + API_KEYS + '&query=' + query.split(' ').join('+'),
+    url: 'https://api.themoviedb.org/3/search/' + selection + '?include_adult=false&api_key=' + API_KEYS + '&query=' + query.split(' ').join('+'),
     method: 'GET',
     dataType: 'json'
     }).then(function successCallback(response) {

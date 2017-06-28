@@ -4,20 +4,21 @@ angular.module('main-app')
   return {
     scope: {
       movie: '<',
-      user: '<'
+      user: '<',
+      details: '<',
+      handleDetails: '<',
     },
     restrict: 'E',
     controller: function(searchOMDB, searchTheMovieDB, $http) {
       this.$onInit = function() {
+
         this.OMDBService = searchOMDB;
         this.TMDBService = searchTheMovieDB;
-        this.details = true;
+        this.currentMovieBoolean = false;
         this.TMDBService.searchById(this.movie.imdb_id,'movie', (data) => {
-          console.log('data', data)
           this.TMDBService.getVideos(data.id, (data) => {
             this.movie.video = data;
             if (this.movie.video.results.length === 0) {
-              console.log('its 0')
               this.movie.video.results.push({id:"533ec652c3a368544800015b", iso_639_1:"en",iso_3166_1:"US", key:"R3siRkmzaBI"})
             }
           })
@@ -27,10 +28,6 @@ angular.module('main-app')
           this.movie.details.Poster === "N/A" || !this.movie.details.Poster ? this.movie.details.Poster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' : this.movie.details.Poster
         }, 'movie');
       };
-
-      this.handleViewDetails = function() {
-        this.details = !this.details;
-      }
 
       this.handleAddToFavorites = function() {
         var idList = this.user.movies.map((x) => x.imdb_id);

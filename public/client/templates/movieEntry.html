@@ -9,7 +9,7 @@
       <div class="rating movie-subhead">{{ctrl.movie.details.Rated}}</div>
       <div class="genre movie-subhead">{{ctrl.movie.details.Genre}}</div>
       <div class="movie-staff">Director: {{ctrl.movie.details.Director}}</div>
-      <div class="movie-staff">Cast: {{ctrl.movie.details.Actors}}</div>
+      <div class="movie-staff" >Cast: {{ctrl.movie.details.Actors}}</div>
     </div>
 
     <div class="movie-critic-info">
@@ -25,9 +25,6 @@
         <img id="metacritic-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/500px-Metacritic.svg.png">
         {{ctrl.movie.details.Ratings[2].Value}}
       </div>
-    </div>
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.video.results[0].key}}" allowFullScreen></iframe>
     </div>
     <div class="user-movie-comment">
       <div class="user-critic user-critic-element">{{ctrl.user.username}} says:</div>
@@ -62,9 +59,6 @@
     </div>
 
     <div>
-      <button class="btn favorite-element comment-element" id="view-details-button" ng-click="ctrl.handleViewDetails()">
-        <span>{{ctrl.details ? "View Details" : "Hide Details"}}</span>
-      </button>
       <button class="btn comment-element" id="remove-button" ng-click="ctrl.handleRemoveClick()">
         <span>remove movie</span>
       </button>
@@ -83,6 +77,9 @@
     <div class="production">Production: {{ctrl.movie.details.Production}}</div>
     <div class="writer">Writer: {{ctrl.movie.details.Writer}}</div>
     <div class="runtime">Runtime: {{ctrl.movie.details.Runtime}}</div>
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.video.results[0].key}}" allowFullScreen></iframe>
+    </div>
   </div>
 
 </div>

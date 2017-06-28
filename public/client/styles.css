@@ -302,15 +302,15 @@
   display:none;
 }
 
-#menu2 .favorite #add-favorite-button {
+#menu3 .favorite #add-favorite-button {
   display:none;
 }
 
-#menu2 .favorite #remove-button {
+#menu3 .favorite #remove-button {
   display: none;
 }
 
-#menu2 .non-favorite {
+#menu3 .non-favorite {
   display:none;
 }
 

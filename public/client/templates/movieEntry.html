@@ -32,9 +32,6 @@
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.video.results[0].key}}" allowFullScreen></iframe>
     </div>
-    <button class="btn favorite-element comment-element" id="view-details-button" ng-click="ctrl.handleViewDetails()">
-      <span>View Details</span>
-    </button>
     <div class="user-movie-comment">
       <div class="user-critic user-critic-element">{{ctrl.user.username}} says:</div>
       <div class="user-critic-comment user-critic-element"> "{{ctrl.movie.comment}}"</div>
@@ -74,6 +71,17 @@
     <button class="btn favorite-element comment-element" id="remove-favorite-button" ng-click="ctrl.handleAddToFavorites()">
       <span>remove Favorite</span>
     </button>
+  </div>
+  <button class="btn favorite-element comment-element" id="view-details-button" ng-click="ctrl.handleViewDetails()">
+    <span>{{ctrl.details ? "View Details" : "Hide Details"}}</span>
+  </button>
+  <div class="ng-hide" ng-hide="ctrl.details">
+    <h3>Details</h3>
+    <div class="plot">Plot: {{ctrl.movie.details.Plot}}</div>
+    <div class="awards">Awards: {{ctrl.movie.details.Awards}}</div>
+    <div class="production">Production: {{ctrl.movie.details.Production}}</div>
+    <div class="writer">Writer: {{ctrl.movie.details.Writer}}</div>
+    <div class="runtime">Runtime: {{ctrl.movie.details.Runtime}}</div>
   </div>
 
 </div>

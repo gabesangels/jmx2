@@ -11,6 +11,7 @@ angular.module('main-app')
       this.$onInit = function() {
         this.OMDBService = searchOMDB;
         this.TMDBService = searchTheMovieDB;
+        this.details = true;
         this.TMDBService.searchById(this.movie.imdb_id,'movie', (data) => {
           console.log('data', data)
           this.TMDBService.getVideos(data.id, (data) => {
@@ -28,7 +29,10 @@ angular.module('main-app')
       };
 
       this.handleViewDetails = function() {
-        console.log('clicked', this.movie.video)
+        console.log('clicked', this.movie.details)
+        this.details = !this.details;
+        console.log('details', this.details)
+
       }
 
       this.handleAddToFavorites = function() {

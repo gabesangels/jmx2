@@ -1,12 +1,9 @@
 <div class="movie-entry">
 
-  <img class="movie-entry-poster" src="http://martjackassests.azureedge.net/css/themes/mjt02012429/images/main/show_loader.gif" ng-src="{{ctrl.movie.details.Poster}}">
+
   <div class="movie-entry-info">
     <h4 class="movie-entry-title inline-block">{{ctrl.movie.details.Title || 'N/A'}}</h4>
-    <button class="btn favorite-element comment-element" id="add-favorite-button" ng-click="ctrl.handleAddToFavorites()">
-      <span>make favorite</span>
-    </button>
-
+    <img class="movie-entry-poster" src="http://martjackassests.azureedge.net/css/themes/mjt02012429/images/main/show_loader.gif" ng-src="{{ctrl.movie.details.Poster}}">
     <div class="movie-info">
       <div class="year movie-subhead">{{ctrl.movie.details.Year}} </div>
       <div class="rating movie-subhead">{{ctrl.movie.details.Rated}}</div>
@@ -64,17 +61,21 @@
       </select>
     </div>
 
-    <div></div>
-    <button class="btn comment-element" id="remove-button" ng-click="ctrl.handleRemoveClick()">
-      <span>remove movie</span>
-    </button>
-    <button class="btn favorite-element comment-element" id="remove-favorite-button" ng-click="ctrl.handleAddToFavorites()">
-      <span>remove Favorite</span>
-    </button>
+    <div>
+      <button class="btn favorite-element comment-element" id="view-details-button" ng-click="ctrl.handleViewDetails()">
+        <span>{{ctrl.details ? "View Details" : "Hide Details"}}</span>
+      </button>
+      <button class="btn comment-element" id="remove-button" ng-click="ctrl.handleRemoveClick()">
+        <span>remove movie</span>
+      </button>
+      <button class="btn favorite-element comment-element" id="add-favorite-button" ng-click="ctrl.handleAddToFavorites()">
+        <span>make favorite</span>
+      </button>
+      <button class="btn favorite-element comment-element" id="remove-favorite-button" ng-click="ctrl.handleAddToFavorites()">
+        <span>remove Favorite</span>
+      </button>
+    </div>
   </div>
-  <button class="btn favorite-element comment-element" id="view-details-button" ng-click="ctrl.handleViewDetails()">
-    <span>{{ctrl.details ? "View Details" : "Hide Details"}}</span>
-  </button>
   <div class="ng-hide" ng-hide="ctrl.details">
     <h3>Details</h3>
     <div class="plot">Plot: {{ctrl.movie.details.Plot}}</div>

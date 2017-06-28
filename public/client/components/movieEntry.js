@@ -29,10 +29,7 @@ angular.module('main-app')
       };
 
       this.handleViewDetails = function() {
-        console.log('clicked', this.movie.details)
         this.details = !this.details;
-        console.log('details', this.details)
-
       }
 
       this.handleAddToFavorites = function() {

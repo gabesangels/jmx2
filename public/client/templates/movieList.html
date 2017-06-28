@@ -1,3 +1,8 @@
 <div>
-  <movie-entry ng-repeat="movie in ctrl.movies"  movie="movie" ng-class="movie.isFavorite ? 'favorite' : 'non-favorite'" user="ctrl.user" />
+  <div>
+    <button class="btn btn-success ng-hide" ng-hide="ctrl.details" ng-click="ctrl.handleRender()">
+      <span>SHOW ALL MOVIES</span>
+    </button>
+  </div>
+  <movie-entry details="ctrl.details" ng-click="ctrl.handleDetails($index)" ng-repeat="movie in ctrl.movies track by $index"  movie="movie" ng-class="movie.isFavorite ? 'favorite' : 'non-favorite'" user="ctrl.user" />
 </div>

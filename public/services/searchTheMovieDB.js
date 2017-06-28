@@ -55,4 +55,19 @@ angular.module('main-app')
         console.log('Error')
       });
     }
+    
+  //this is used to get videos
+  this.getVideos = function(id, callback) {
+    $http({
+      url: 'https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=' + API_KEYS,
+      method: 'GET',
+      dataType: 'json'
+      }).then(function successCallback(response) {
+        if (callback) {
+          callback(response.data);
+        }
+      }, function errorCallback(response) {
+        console.log('Error')
+      });
+    }
 });

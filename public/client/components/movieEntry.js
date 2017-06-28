@@ -12,11 +12,9 @@ angular.module('main-app')
         this.OMDBService = searchOMDB;
         this.TMDBService = searchTheMovieDB;
         this.TMDBService.searchById(this.movie.imdb_id,'movie', (data) => {
-          console.log('data', data)
           this.TMDBService.getVideos(data.id, (data) => {
             this.movie.video = data;
             if (this.movie.video.results.length === 0) {
-              console.log('its 0')
               this.movie.video.results.push({id:"533ec652c3a368544800015b", iso_639_1:"en",iso_3166_1:"US", key:"R3siRkmzaBI"})
             }
           })

@@ -8,6 +8,7 @@ angular.module('main-app')
     },
     restrict: 'E',
     controller: function() {
+      
     },
     controllerAs: 'ctrl',
     bindToController: true,

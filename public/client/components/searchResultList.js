@@ -6,6 +6,7 @@ angular.module('main-app')
   return {
     scope: {
       movies: '<',
+      tv_show: '<',
       user: '<',
       selection: '<'
     },

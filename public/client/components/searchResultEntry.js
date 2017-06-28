@@ -18,7 +18,6 @@ angular.module('main-app') // copied mostly from ng-cast
           });
         }
         else if (this.selection === 'tv') {
-          
           $http.post('/addTv', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
             $http.get('/sess').then((session) => {
               this.user.tv_shows = session.data.tv_shows;
@@ -34,6 +33,7 @@ angular.module('main-app') // copied mostly from ng-cast
   return {
     scope: {
       movie: '<',
+      tv_show: '<',
       user: '<',
       selection: '<'
     },

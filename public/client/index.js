@@ -1,5 +1,12 @@
 angular.module('main-app', ['ngRoute'])
 
+ .config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'https://www.youtube.com/**'
+  ]);
+})
+
 .config(function ($locationProvider, $routeProvider) {
 
     $routeProvider
@@ -43,6 +50,6 @@ angular.module('main-app', ['ngRoute'])
       //     // not going to #login, we should redirect now
       //     $location.path( "/login" );
       //   }
-      // }         
+      // }
     });
  })

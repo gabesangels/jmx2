@@ -68,12 +68,12 @@ function toggleMovieFavorite(user, movie) {
 
   findOne(user, function (err, account) {
     if (err) throw err;
-    for (var i = 0; i < account.watched.length; i++) {
-      console.log('MOVIE IS', movie, 'account.watched[i]', account.watched[i]);
-      if (account.watched[i].imdb_id === movie.imdb_id) {
-        account.watched[i].isFavorite = !account.watched[i].isFavorite;
-        account.watched.unshift({});
-        account.watched.shift({});
+    for (var i = 0; i < account.movies.length; i++) {
+      console.log('MOVIE IS', movie, 'account.movies[i]', account.movies[i]);
+      if (account.movies[i].imdb_id === movie.imdb_id) {
+        account.movies[i].isFavorite = !account.movies[i].isFavorite;
+        account.movies.unshift({});
+        account.movies.shift({});
         break
       }
     }
@@ -99,11 +99,11 @@ function toggleMovieFavorite(user, movie) {
 function addCommentToWatchedMovie(user, imdb_id, comment) {
   findOne(user, function (err, account) {
     if (err) throw err;
-    for (var i = 0; i < account.watched.length; i++) {
-      if (account.watched[i].imdb_id === imdb_id) {
-        account.watched[i].comment = comment;
-        account.watched.unshift({});
-        account.watched.shift({});
+    for (var i = 0; i < account.movies.length; i++) {
+      if (account.movies[i].imdb_id === imdb_id) {
+        account.movies[i].comment = comment;
+        account.movies.unshift({});
+        account.movies.shift({});
         break
       }
     }
@@ -114,11 +114,11 @@ function addCommentToWatchedMovie(user, imdb_id, comment) {
 function addRatingToWatchedMovie(user, imdb_id, rating) {
   findOne(user, function (err, account) {
     if (err) throw err;
-    for (var i = 0; i < account.watched.length; i++) {
-      if (account.watched[i].imdb_id === imdb_id) {
-        account.watched[i].rating = rating;
-        account.watched.unshift({});
-        account.watched.shift({});
+    for (var i = 0; i < account.movies.length; i++) {
+      if (account.movies[i].imdb_id === imdb_id) {
+        account.movies[i].rating = rating;
+        account.movies.unshift({});
+        account.movies.shift({});
         break
       }
     }

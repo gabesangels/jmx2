@@ -18,36 +18,36 @@ angular.module('main-app')
 
 
       this.handleAddToFavorites = function() {
-        var idList = this.user.watched.map((x) => x.imdb_id);
+        var idList = this.user.movies.map((x) => x.imdb_id);
         var i = idList.indexOf(this.movie.imdb_id);
 
         $http.post('/addFavorite', {user: this.user.username,
-        movie: this.user.watched[idList.indexOf(this.movie.imdb_id)]}).then(() => {
+        movie: this.user.movies[idList.indexOf(this.movie.imdb_id)]}).then(() => {
           $http.get('/sess').then((session) => {
-            this.user.watched[i].isFavorite = session.data.watched[i].isFavorite;
+            this.user.movies[i].isFavorite = session.data.movies[i].isFavorite;
           });
         });
       };
 
       this.handleAddCommentClick = function() {
-        var idList = this.user.watched.map((x) => x.imdb_id);
+        var idList = this.user.movies.map((x) => x.imdb_id);
         var i = idList.indexOf(this.movie.imdb_id);
 
         $http.post('/addComment', {user: this.user.username, imdb_id: this.movie.imdb_id, comment: this.input}).then(() => {
           $http.get('/sess').then((session) => {
 
-            this.user.watched[i].comment = session.data.watched[i].comment;
+            this.user.movies[i].comment = session.data.movies[i].comment;
           });
         });
       };
 
       this.handleRatingClick = function(rating) {
-        var idList = this.user.watched.map((x) => x.imdb_id);
+        var idList = this.user.movies.map((x) => x.imdb_id);
         var i = idList.indexOf(this.movie.imdb_id);
 
         $http.post('/editRating', {user: this.user.username, imdb_id: this.movie.imdb_id, rating: this.rating}).then(() => {
           $http.get('/sess').then((session) => {
-            this.user.watched[i].rating = session.data.watched[i].rating;
+            this.user.movies[i].rating = session.data.movies[i].rating;
           });
         });
       };
@@ -55,7 +55,7 @@ angular.module('main-app')
       this.handleRemoveClick = function() {
         $http.post('/removeFromWatched', {user: this.user.username, imdb_id: this.movie.imdb_id}).then(() => {
           $http.get('/sess').then((session) => {
-            this.user.watched = session.data.watched;
+            this.user.movies = session.data.movies;
           });
         });
       };

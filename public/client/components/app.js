@@ -18,7 +18,7 @@ angular.module('main-app')
 
     // Creates the recomendations
     // please fix this -MN
-    this.user.watched.forEach(item => {
+    this.user.movies.forEach(item => {
       if (item.isFavorite) {
         this.TMDBservice.searchById(item.imdb_id, data => {
           this.TMDBservice.getRecommendations(data.id, data => {

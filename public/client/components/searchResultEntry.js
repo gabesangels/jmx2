@@ -6,13 +6,25 @@ angular.module('main-app') // copied mostly from ng-cast
     this.TMDBservice = searchTheMovieDB
     
     this.handleMovieClick = function() {
-      this.TMDBservice.searchById(this.movie.id, (data) => {
-        this.imdb_id = data.imdb_id
-        $http.post('/addMovie', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
-          $http.get('/sess').then((session) => {
-            this.user.watched = session.data.watched;
+      this.TMDBservice.searchById(this.movie.id, this.selection, (data) => {
+        this.imdb_id = data.imdb_id ? data.imdb_id : data.id
+        
+        if (this.selection === 'movie') {
+          
+          $http.post('/addMovie', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
+            $http.get('/sess').then((session) => {
+              this.user.movies = session.data.movies;
+            });
           });
-        });
+        }
+        else if (this.selection === 'tv') {
+          
+          $http.post('/addTv', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
+            $http.get('/sess').then((session) => {
+              this.user.tv_shows = session.data.tv_shows;
+            })
+          })
+        }
       });
     };
   };
@@ -22,7 +34,8 @@ angular.module('main-app') // copied mostly from ng-cast
   return {
     scope: {
       movie: '<',
-      user: '<'
+      user: '<',
+      selection: '<'
     },
     restrict: 'E',
     controller: 'SearchCtrl2',

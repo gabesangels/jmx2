@@ -27,9 +27,9 @@ angular.module('main-app')
 
   // this is used to retrieve additional infos from TMDB after getting TMDB id for titles
   // I know this is confusing so apologies in advance, please reference both of the docs for both APIs
-  this.searchById = function(id, callback) {
+  this.searchById = function(id, selection, callback) {
     $http({
-    url: 'https://api.themoviedb.org/3/movie/' + id + '?api_key=' + API_KEYS,
+    url: 'https://api.themoviedb.org/3/' + selection + '/' + id + '?api_key=' + API_KEYS,
     method: 'GET',
     dataType: 'json'
     }).then(function successCallback(response) {

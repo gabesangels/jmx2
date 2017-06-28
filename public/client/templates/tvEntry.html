@@ -1,0 +1,75 @@
+<div class="movie-entry">
+
+  <img class="movie-entry-poster" src="http://martjackassests.azureedge.net/css/themes/mjt02012429/images/main/show_loader.gif" ng-src="{{ctrl.tv_show.details.Poster}}">
+
+  <div class="movie-entry-info">
+    <h4 class="movie-entry-title inline-block">{{ctrl.tv_show.details.Title || 'N/A'}}</h4>
+    <button class="btn favorite-element comment-element" id="add-favorite-button" >
+      <span>make favorite</span>
+    </button>
+
+    <div class="movie-info">
+      <div class="year movie-subhead">{{ctrl.tv_show.details.Year}} </div>
+      <div class="rating movie-subhead">{{ctrl.tv_show.details.Rated}}</div>
+      <div class="genre movie-subhead">{{ctrl.tv_show.details.Genre}}</div>
+      <div class="movie-staff">Director: {{ctrl.tv_show.details.Director}}</div>
+      <div class="movie-staff">Cast: {{ctrl.movie.tv_show.Actors}}</div>
+    </div>
+
+    <div class="movie-critic-info">
+      <div class="critic-element">
+        <img id="imdb-icon" src="http://icons.iconarchive.com/icons/icons8/windows-8/512/Cinema-Imdb-icon.png">
+        {{ctrl.tv_show.details.Ratings[0].Value}}
+      </div>
+      <div class="critic-element">
+        <img id="rotten-tomato-icon" src="http://www.userlogos.org/files/logos/jumpordie/rottentomatoes_03.png">
+        {{ctrl.tv_show.details.Ratings[1].Value}}
+      </div>
+      <div class="critic-element">
+        <img id="metacritic-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/500px-Metacritic.svg.png">
+        {{ctrl.tv_show.details.Ratings[2].Value}}
+      </div>
+    </div>
+
+    <div class="user-movie-comment">
+      <div class="user-critic user-critic-element">{{ctrl.user.username}} says:</div>
+      <div class="user-critic-comment user-critic-element"> "{{ctrl.tv_show.comment}}"</div>
+    </div>
+
+    <div class="search-bar form-inline comment-search-bar">
+      <input
+        ng-model="ctrl.input"
+        class="form-control comment-element"
+        type="text"
+      />
+      <button class="btn comment-element" id="edit-button" >
+        <span>edit</span>
+      </button>
+    </div>
+
+    <div class="inline-block" id="user-rating">Rating: {{ctrl.tv_show.rating}}/10</div>
+    <div class="rating-change inline-block">
+      <select class="rating-change-select" ng-model="ctrl.rating" name="carlist" form="carform" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    
+    <div></div>
+    <button class="btn comment-element" id="remove-button" >
+      <span>remove TV show</span>
+    </button>
+    <button class="btn favorite-element comment-element" id="remove-favorite-button" >
+      <span>remove Favorite</span>
+    </button>
+  </div>
+
+</div>

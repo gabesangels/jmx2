@@ -91,6 +91,15 @@ app.post('/addMovie', function (req, res) {
 
 });
 
+app.post('/addTv', function (req, res) {
+  console.log('inside /addTv')
+  var user = req.body.user;
+  var imdb_id = req.body.imdb_id;
+
+  accounts.insertTvIntoWatched(user, {imdb_id: imdb_id, rating: '?', comment: 'N/A'});
+  res.sendStatus(200);
+})
+
 app.post('/addFavorite', function(req, res) {
   var user = req.body.user;
   var movie = req.body.movie;

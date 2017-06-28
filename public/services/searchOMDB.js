@@ -12,9 +12,9 @@ angular.module('main-app')
     return url + paramsArray.join('&');
   }
 
-  this.search = function(query, callback) {
+  this.search = function(query, callback, type) {
     $http({
-    url: makeQueryString('http://omdbapi.com/?', query) + '&apikey=' + API_KEYS + '&page=1',
+    url: makeQueryString('http://omdbapi.com/?', query) + '&apikey=' + API_KEYS + '&page=1' + '&type=' + type,
     method: 'GET',
     dataType: 'json',
     }).then(function successCallback(response) {

@@ -6,7 +6,8 @@ angular.module('main-app')
   return {
     scope: {
       movies: '<',
-      user: '<'
+      user: '<',
+      selection: '<'
     },
     restrict: 'E',
     controller: 'SearchCtrl',

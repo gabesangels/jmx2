@@ -41,6 +41,15 @@ function insertMovieIntoWatched(user, movie) {
   });
 };
 
+function insertTvIntoWatched(user, tv_show) {
+
+  findOne(user, function(err, account) {
+    console.log('this user is', user)
+    account.tv_shows.unshift(tv_show);
+    account.save();
+  });
+};
+
 function removeMovieFromWatched(user, imdb_id) {
   findOne(user, function (err, account) {
     if (err) throw err;
@@ -125,6 +134,7 @@ exports.findOne = findOne;
 exports.findAll = findAll;
 exports.insertOne = insertOne;
 exports.insertMovieIntoWatched = insertMovieIntoWatched;
+exports.insertTvIntoWatched = insertTvIntoWatched;
 exports.addCommentToWatchedMovie = addCommentToWatchedMovie;
 exports.addRatingToWatchedMovie = addRatingToWatchedMovie;
 exports.removeMovieFromWatched = removeMovieFromWatched;

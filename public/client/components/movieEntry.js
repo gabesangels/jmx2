@@ -11,7 +11,8 @@ angular.module('main-app')
       this.$onInit = function() {
         this.OMDBService = searchOMDB;
         this.TMDBService = searchTheMovieDB;
-        this.TMDBService.searchById(this.movie.imdb_id, (data) => {
+        this.TMDBService.searchById(this.movie.imdb_id,'movie', (data) => {
+          console.log('data', data)
           this.TMDBService.getVideos(data.id, (data) => {
             this.movie.video = data;
             if (this.movie.video.results.length === 0) {

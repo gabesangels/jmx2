@@ -20,7 +20,9 @@ angular.module('main-app')
       callback(err);
     });
   };
-
+ var getSession = function() {
+   return $http.get('/sess')
+ }
   var signup = function(username, password, callback) {
     $http({
       url: `${storeURL}/signup`,
@@ -42,6 +44,7 @@ angular.module('main-app')
 
   return {
     signin: signin,
-    signup: signup
+    signup: signup,
+    getSession: getSession,
   };
 });

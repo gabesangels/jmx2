@@ -1,8 +1,22 @@
 angular.module('main-app', ['ngRoute'])
-
+.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'https://www.youtube.com/**'
+  ]);
+})
 .config(function ($locationProvider, $routeProvider) {
 
     $routeProvider
+
+        .when('/user/:id', {
+            controller: 'DetailsCtrl',
+            templateUrl: 'public/client/templates/movieDetailsList.html',
+            controllerAs: 'ctrl'
+            // hideMenus: true
+
+        })
+
         .when('/user', {
             controller: 'MainCtrl',
             templateUrl: 'public/client/templates/app.html',
@@ -32,7 +46,8 @@ angular.module('main-app', ['ngRoute'])
           // session.user = {};
           $location.path( "/login" );
         } else if (session.data.user) {
-          $location.path( "/user" );
+          // $location.path( "/user/:id" );
+
         }
       });
       // if ( $rootScope.loggedUser == null ) {
@@ -43,6 +58,6 @@ angular.module('main-app', ['ngRoute'])
       //     // not going to #login, we should redirect now
       //     $location.path( "/login" );
       //   }
-      // }         
+      // }
     });
  })

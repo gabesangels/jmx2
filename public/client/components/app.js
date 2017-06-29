@@ -9,6 +9,8 @@ angular.module('main-app')
   this.OMDBService = searchOMDB;
   this.intendedUser;
 
+  
+
   $http.get('/sess').then((session) => {
 
     this.intendedUser = session;

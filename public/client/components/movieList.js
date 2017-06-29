@@ -4,11 +4,25 @@ angular.module('main-app')
   return {
     scope: {
       movies: '<',
-      user: '<'
+      user: '<',
+      details: '<',
     },
     restrict: 'E',
     controller: function() {
-      
+      this.$onInit = function() {
+        this.details = true;
+      }
+      this.handleDetails = (e) => {
+        if(this.details === true) {
+          this.mooovies = this.movies
+          this.movies = this.movies.slice(e,e+1)
+          this.details = false;
+        }
+      }
+      this.handleRender = (e) => {
+        this.movies = this.mooovies
+        this.details  = true
+      }
     },
     controllerAs: 'ctrl',
     bindToController: true,

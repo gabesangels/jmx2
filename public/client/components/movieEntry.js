@@ -5,11 +5,9 @@ angular.module('main-app')
     scope: {
       movie: '<',
       user: '<',
-<<<<<<< Updated upstream
       details: '<',
       handleDetails: '<',
-=======
->>>>>>> Stashed changes
+
     },
     restrict: 'E',
     controller: function(searchOMDB, searchTheMovieDB, $http) {
@@ -29,7 +27,7 @@ angular.module('main-app')
         this.OMDBService.search({i: this.movie.imdb_id}, (data) => {
           this.movie.details = data;
           console.log(typeof this.movie.details.Actors)
-          if(this.movie.details.Actors.length > 0) {
+          if(this.movie.details.Actors !== "N/A" && this.movie.details.Actors) {
             this.actors = this.movie.details.Actors.split(', ')
           }
 
@@ -37,14 +35,11 @@ angular.module('main-app')
         }, 'movie');
       };
 
-<<<<<<< Updated upstream
-=======
       this.handleViewDetails = function() {
         console.log('clicked', this.movie.details)
 
       }
 
->>>>>>> Stashed changes
       this.handleAddToFavorites = function() {
         var idList = this.user.movies.map((x) => x.imdb_id);
         var i = idList.indexOf(this.movie.imdb_id);

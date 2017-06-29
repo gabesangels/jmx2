@@ -7,6 +7,7 @@ angular.module('main-app')
       user: '<',
       details: '<',
       handleDetails: '<',
+      handleRender: '<',
 
     },
     restrict: 'E',

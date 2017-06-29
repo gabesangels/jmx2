@@ -26,6 +26,12 @@
         {{ctrl.movie.details.Ratings[2].Value}}
       </div>
     </div>
+<<<<<<< Updated upstream
+=======
+    <button class="btn favorite-element comment-element" id="view-details-button" ng-click="ctrl.handleViewDetails()">
+      <span>View Details</span>
+    </button>
+>>>>>>> Stashed changes
     <div class="user-movie-comment">
       <div class="user-critic user-critic-element">{{ctrl.user.username}} says:</div>
       <div class="user-critic-comment user-critic-element"> "{{ctrl.movie.comment}}"</div>
@@ -81,5 +87,9 @@
       <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.video.results[0].key}}" allowFullScreen></iframe>
     </div>
   </div>
-
+  <div class="details">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.video.results[0].key}}" allowFullScreen></iframe>
+    </div>
+  </div>
 </div>

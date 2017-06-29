@@ -5,8 +5,11 @@ angular.module('main-app')
     scope: {
       movie: '<',
       user: '<',
+<<<<<<< Updated upstream
       details: '<',
       handleDetails: '<',
+=======
+>>>>>>> Stashed changes
     },
     restrict: 'E',
     controller: function(searchOMDB, searchTheMovieDB, $http) {
@@ -29,6 +32,14 @@ angular.module('main-app')
         }, 'movie');
       };
 
+<<<<<<< Updated upstream
+=======
+      this.handleViewDetails = function() {
+        console.log('clicked', this.movie.details)
+
+      }
+
+>>>>>>> Stashed changes
       this.handleAddToFavorites = function() {
         var idList = this.user.movies.map((x) => x.imdb_id);
         var i = idList.indexOf(this.movie.imdb_id);

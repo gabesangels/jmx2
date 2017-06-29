@@ -31,7 +31,7 @@ angular.module('main-app', ['ngRoute'])
   // console.log('hello guys!!!', $rootScope);
         // register listener to watch route changes
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      // console.log('this is being triggered!', $location.$$path);
+      //console.log('this is being triggered!', $location.$$path);
       $http.get('/userCheck').then( (session) => {
         // console.log('true?', $location.$$path === '/user' && !session.user);
         // console.log('session is ', session);

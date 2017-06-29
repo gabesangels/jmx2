@@ -41,11 +41,12 @@ function insertMovieIntoWatched(user, movie) {
   });
 };
 
-function insertTvIntoWatched(user, tv_show) {
+function insertTvIntoWatched(user, tvShow) {
 
   findOne(user, function(err, account) {
+    if (err) throw err;
     console.log('this user is', user)
-    account.tv_shows.unshift(tv_show);
+    account.tvShows.unshift(tvShow);
     account.save();
   });
 };

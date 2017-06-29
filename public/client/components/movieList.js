@@ -23,7 +23,6 @@ angular.module('main-app')
         this.movies = this.mooovies
         this.details  = true
       }
-
     },
     controllerAs: 'ctrl',
     bindToController: true,

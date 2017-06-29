@@ -13,8 +13,8 @@ angular.module('main-app')
     },
     restrict: 'E',
     controller: function(searchOMDB, searchTheMovieDB, $http) {
-      this.$onInit = function() {
-
+      this.$onInit = () => {
+        // console.log(this.movie)
         this.OMDBService = searchOMDB;
         this.TMDBService = searchTheMovieDB;
         this.currentMovieBoolean = false;
@@ -28,6 +28,11 @@ angular.module('main-app')
         })
         this.OMDBService.search({i: this.movie.imdb_id}, (data) => {
           this.movie.details = data;
+          console.log(typeof this.movie.details.Actors)
+          if(this.movie.details.Actors.length > 0) {
+            this.actors = this.movie.details.Actors.split(', ')
+          }
+
           this.movie.details.Poster === "N/A" || !this.movie.details.Poster ? this.movie.details.Poster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' : this.movie.details.Poster
         }, 'movie');
       };

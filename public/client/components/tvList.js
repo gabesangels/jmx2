@@ -3,12 +3,11 @@ angular.module('main-app')
 .directive('tvList', function() {
   return {
     scope: {
-      tv_shows: '<',
+      tvShows: '<',
       user: '<'
     },
     restrict: 'E',
     controller: function() {
-
     },
     controllerAs: 'ctrl',
     bindToController: true,

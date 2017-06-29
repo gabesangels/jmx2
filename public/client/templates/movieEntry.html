@@ -10,6 +10,9 @@
       <div class="genre movie-subhead">{{ctrl.movie.details.Genre}}</div>
       <div class="movie-staff">Director: {{ctrl.movie.details.Director}}</div>
       <div class="movie-staff" >Cast: {{ctrl.movie.details.Actors}}</div>
+      <div class="actor-list">
+        <actor-list actors="ctrl.movie.details.Actors" user="ctrl.user"/>
+      </div>
     </div>
 
     <div class="movie-critic-info">

@@ -1,3 +1,3 @@
 <div>
-  <tv-entry ng-repeat="tv_show in ctrl.tv_shows" tv_show="tv_show" user="ctrl.user" />
+  <tv-entry ng-repeat="tvShow in ctrl.tvShows track by $index" tv-show="tvShow" user="ctrl.user" />
 </div>

@@ -5,7 +5,7 @@ angular.module('main-app')
 .directive('searchResultList', function() {
   return {
     scope: {
-      movies: '<',
+      results: '<',
       user: '<',
       selection: '<'
     },

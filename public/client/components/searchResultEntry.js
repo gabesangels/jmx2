@@ -6,7 +6,7 @@ angular.module('main-app') // copied mostly from ng-cast
     this.TMDBservice = searchTheMovieDB
     
     this.handleMovieClick = function() {
-      this.TMDBservice.searchById(this.movie.id, this.selection, (data) => {
+      this.TMDBservice.searchById(this.result.id, this.selection, (data) => {
         this.imdb_id = data.imdb_id ? data.imdb_id : data.id
         
         if (this.selection === 'movie') {
@@ -20,7 +20,12 @@ angular.module('main-app') // copied mostly from ng-cast
         else if (this.selection === 'tv') {
           $http.post('/addTv', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
             $http.get('/sess').then((session) => {
-              this.user.tv_shows = session.data.tv_shows;
+              this.dude = session;
+              console.log('getting here user', this.user.tvShows)
+              console.log('getting here session', session)
+              this.user.tvShows = this.dude.data.tvShows;
+              console.log('then here user', this.user.tvShows)
+              console.log('then here session', this.dude.data.tvShows)
             })
           })
         }
@@ -32,8 +37,7 @@ angular.module('main-app') // copied mostly from ng-cast
 .directive('searchResultEntry', function() {
   return {
     scope: {
-      movie: '<',
-      tv_show: '<',
+      result: '<',
       user: '<',
       selection: '<'
     },

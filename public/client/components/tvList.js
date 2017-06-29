@@ -8,9 +8,6 @@ angular.module('main-app')
     },
     restrict: 'E',
     controller: function() {
-      console.log('this.user at list', this.user)
-      console.log('tvShows at List', this.tvShows)
-
     },
     controllerAs: 'ctrl',
     bindToController: true,

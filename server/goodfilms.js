@@ -117,6 +117,15 @@ app.post('/addComment', function (req, res) {
   res.sendStatus(200);
 });
 
+app.post('/addTvComment', function (req, res) {
+  var user = req.body.user;
+  var imdb_id = req.body.imdb_id;
+  var comment = req.body.comment;
+
+  accounts.addCommentToWatchedTv(user, imdb_id, comment);
+  res.sendStatus(200);
+})
+
 app.post('/removeFromWatched', function (req, res) {
   var user = req.body.user;
   var imdb_id = req.body.imdb_id;

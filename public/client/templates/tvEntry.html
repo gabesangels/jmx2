@@ -14,4 +14,20 @@
       </div>
     </div>
 
+    <div class="user-movie-comment">
+      <div class="user-critic user-critic-element">{{ctrl.user.username}} says:</div>
+      <div class="user-critic-comment user-critic-element"> "{{ctrl.tvShow.comment}}"</div>
+    </div>
+
+    <div class="search-bar form-inline comment-search-bar">
+      <input
+        ng-model="ctrl.input"
+        class="form-control comment-element"
+        type="text"
+      />
+      <button class="btn comment-element" id="edit-button" ng-click="ctrl.handleAddCommentClick(); ctrl.input=''" onclick="return false">
+        <span>edit</span>
+      </button>
+    </div>
+
 </div>

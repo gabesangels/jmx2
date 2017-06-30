@@ -41,6 +41,26 @@ angular.module('main-app')
         });
       };
 
+      this.handleAddToFavorites = function() {
+        var idList = this.user.tvShows.map((x) => x.imdb_id);
+        var i = idList.indexOf(this.tvShow.imdb_id);
+
+        $http.post('/addTvFavorite', {user: this.user.username,
+        tvShow: this.user.tvShows[idList.indexOf(this.tvShow.imdb_id)]}).then(() => {
+          $http.get('/sess').then((session) => {
+            this.user.tvShows[i].isFavorite = session.data.tvShows[i].isFavorite;
+          });
+        });
+      };
+
+      this.handleRemoveClick = function() {
+        $http.post('/removeFromTvWatched', {user: this.user.username, imdb_id: this.tvShow.imdb_id}).then(() => {
+          $http.get('/sess').then((session) => {
+            this.user.tvShows = session.data.tvShows;
+          });
+        });
+      };
+
     },
     controllerAs: 'ctrl',
     bindToController: true,

@@ -65,6 +65,20 @@ function removeMovieFromWatched(user, imdb_id) {
   });
 };
 
+function removeTvFromWatched(user, imdb_id) {
+  findOne(user, function (err, account) {
+    if (err) throw err;
+    for (var i = 0; i < account.tvShows.length; i++) {
+      if (account.tvShows[i].imdb_id === imdb_id) {
+          account.tvShows.splice(i, 1);
+          console.log('matched')
+        break;
+      }
+    }
+    account.save();
+  });
+};
+
 function toggleMovieFavorite(user, movie) {
 
   findOne(user, function (err, account) {
@@ -75,6 +89,25 @@ function toggleMovieFavorite(user, movie) {
         account.movies[i].isFavorite = !account.movies[i].isFavorite;
         account.movies.unshift({});
         account.movies.shift({});
+        break
+      }
+    }
+    // console.log('ARRE we getting HWEW???', account.watched)
+    account.save();
+    // console.log('ARRE we getting HWEW AFTER SAVE???', account.watched)
+  });
+};
+
+function toggleTvFavorite(user, tvShow) {
+
+  findOne(user, function (err, account) {
+    if (err) throw err;
+    for (var i = 0; i < account.tvShows.length; i++) {
+      console.log('MOVIE IS', movie, 'account.tvShows[i]', account.tvShows[i]);
+      if (account.tvShows[i].imdb_id === movie.imdb_id) {
+        account.tvShows[i].isFavorite = !account.tvShows[i].isFavorite;
+        account.tvShows.unshift({});
+        account.tvShows.shift({});
         break
       }
     }
@@ -173,5 +206,7 @@ exports.addCommentToWatchedTv = addCommentToWatchedTv
 exports.addRatingToWatchedMovie = addRatingToWatchedMovie;
 exports.addRatingToWatchedTv = addRatingToWatchedTv;
 exports.removeMovieFromWatched = removeMovieFromWatched;
+exports.removeTvFromWatched = removeTvFromWatched;
 exports.toggleMovieFavorite = toggleMovieFavorite;
+exports.toggleTvFavorite = toggleTvFavorite;
 // exports.removeMovieFromFaves = removeMovieFromFaves;

@@ -108,6 +108,14 @@ app.post('/addFavorite', function(req, res) {
   res.sendStatus(200);
 });
 
+app.post('/addTvFavorite', function(req, res) {
+  var user = req.body.user;
+  var tvShow = req.body.tvShow;
+
+  accounts.toggleMovieFavorite(user, tvShow);
+  res.sendStatus(200);
+});
+
 app.post('/addComment', function (req, res) {
   var user = req.body.user;
   var imdb_id = req.body.imdb_id
@@ -131,6 +139,14 @@ app.post('/removeFromWatched', function (req, res) {
   var imdb_id = req.body.imdb_id;
 
   accounts.removeMovieFromWatched(user, imdb_id);
+  res.sendStatus(200);
+});
+
+app.post('/removeFromTvWatched', function (req, res) {
+  var user = req.body.user;
+  var imdb_id = req.body.imdb_id;
+
+  accounts.removeTvFromWatched(user, imdb_id);
   res.sendStatus(200);
 });
 

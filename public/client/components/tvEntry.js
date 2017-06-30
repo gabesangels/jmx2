@@ -30,6 +30,17 @@ angular.module('main-app')
         });
       };
 
+      this.handleRatingClick = function(rating) {
+        var idList = this.user.tvShows.map((x) => x.imdb_id);
+        var i = idList.indexOf(this.tvShow.imdb_id);
+
+        $http.post('/editTvRating', {user: this.user.username, imdb_id: this.tvShow.imdb_id, rating: this.rating}).then(() => {
+          $http.get('/sess').then((session) => {
+            this.user.tvShows[i].rating = session.data.tvShows[i].rating;
+          });
+        });
+      };
+
     },
     controllerAs: 'ctrl',
     bindToController: true,

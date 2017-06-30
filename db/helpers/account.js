@@ -112,6 +112,21 @@ function addCommentToWatchedMovie(user, imdb_id, comment) {
   });
 };
 
+function addCommentToWatchedTv(user, imdb_id, comment) {
+  findOne(user, function (err, account) {
+    if (err) throw err;
+    for (var i = 0; i < account.tvShows.length; i++) {
+      if (account.tvShows[i].imdb_id === imdb_id) {
+        account.tvShows[i].comment = comment;
+        account.tvShows.unshift({});
+        account.tvShows.shift({});
+        break
+      }
+    }
+    account.save();
+  });
+}
+
 function addRatingToWatchedMovie(user, imdb_id, rating) {
   findOne(user, function (err, account) {
     if (err) throw err;
@@ -137,6 +152,7 @@ exports.insertOne = insertOne;
 exports.insertMovieIntoWatched = insertMovieIntoWatched;
 exports.insertTvIntoWatched = insertTvIntoWatched;
 exports.addCommentToWatchedMovie = addCommentToWatchedMovie;
+exports.addCommentToWatchedTv = addCommentToWatchedTv
 exports.addRatingToWatchedMovie = addRatingToWatchedMovie;
 exports.removeMovieFromWatched = removeMovieFromWatched;
 exports.toggleMovieFavorite = toggleMovieFavorite;

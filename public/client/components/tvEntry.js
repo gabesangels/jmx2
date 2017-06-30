@@ -17,6 +17,19 @@ angular.module('main-app')
                                                   'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
         })
       }
+
+      this.handleAddCommentClick = function() {
+        var idList = this.user.tvShows.map((x) => x.imdb_id);
+        var i = idList.indexOf(this.tvShow.imdb_id);
+
+        $http.post('/addTvComment', {user: this.user.username, imdb_id: this.tvShow.imdb_id, comment: this.input}).then(() => {
+          $http.get('/sess').then((session) => {
+
+            this.user.tvShows[i].comment = session.data.tvShows[i].comment;
+          });
+        });
+      };
+
     },
     controllerAs: 'ctrl',
     bindToController: true,

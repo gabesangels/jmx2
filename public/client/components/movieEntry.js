@@ -8,12 +8,13 @@ angular.module('main-app')
       details: '<',
       handleDetails: '<',
       handleRender: '<',
+      index: '<',
 
     },
     restrict: 'E',
     controller: function(searchOMDB, searchTheMovieDB, $http) {
       this.$onInit = () => {
-        // console.log(this.movie)
+        console.log('running~~~~')
         this.OMDBService = searchOMDB;
         this.TMDBService = searchTheMovieDB;
         this.currentMovieBoolean = false;
@@ -31,7 +32,7 @@ angular.module('main-app')
           if(this.movie.details.Actors !== "N/A" && this.movie.details.Actors) {
             this.actors = this.movie.details.Actors.split(', ')
           }
-
+          console.log('this.movie', this.movie)
           this.movie.details.Poster === "N/A" || !this.movie.details.Poster ? this.movie.details.Poster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' : this.movie.details.Poster
         }, 'movie');
       };

@@ -10,6 +10,7 @@ angular.module('main-app')
     restrict: 'E',
     controller: function() {
       this.$onInit = function() {
+        // showtimes.getTheatres(10001)
         this.details = true;
       }
       this.handleDetails = (e) => {

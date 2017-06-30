@@ -16,6 +16,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
+
+
 app.get('/userCheck', function(req, res) {
   res.send(req.session);
 });

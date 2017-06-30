@@ -4,16 +4,17 @@ angular.module('main-app') // copied mostly from ng-cast
   this.imdb_id;
   this.$onInit = function() {
     this.TMDBservice = searchTheMovieDB
-    
+
     this.handleMovieClick = function() {
       this.TMDBservice.searchById(this.result.id, this.selection, (data) => {
         this.imdb_id = data.imdb_id ? data.imdb_id : data.id
-        
+
         if (this.selection === 'movie') {
-          
+
           $http.post('/addMovie', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
             $http.get('/sess').then((session) => {
-              this.user.movies = session.data.movies;
+              this.user.movies = [{comment: "N/A", rating: "N/A", imdb_id: "tt0790612"}].concat(this.user.movies);
+              console.log('this.user.movies', this.user.movies)
             });
           });
         }

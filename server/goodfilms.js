@@ -144,6 +144,15 @@ app.post('/editRating', function (req, res) {
   res.sendStatus(200);
 });
 
+app.post('/editTvRating', function (req, res) {
+  var user = req.body.user;
+  var imdb_id = req.body.imdb_id;
+  var rating = req.body.rating;
+
+  accounts.addRatingToWatchedTv(user, imdb_id, rating);
+  res.sendStatus(200);
+})
+
 app.use('/*', function(req, res) {
   res.sendFile(__dirname.slice(0, __dirname.length - 6) + 'index.html');
 });

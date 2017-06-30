@@ -18,30 +18,30 @@ angular.module('main-app')
     this.user.movies = this.intendedUser.data.movies;
     this.user.tvShows = this.intendedUser.data.tvShows;
 
-    // Creates the recomendations
-    // please fix this -MN
     this.user.movies.forEach(item => {
-      if (item.isFavorite) {
-        this.TMDBservice.searchById(item.imdb_id, data => {
-          this.TMDBservice.getRecommendations(data.id, data => {
-            var temp = data.results.sort((a, b) => b.popularity - a.popularity).slice(0, 5).map(item => item.id);
-            temp.forEach(id => {
-              this.TMDBservice.searchById(id, data => {
-                this.recommendations.push(data.imdb_id);
-                this.recommendations.sort();
-              });
-            });
-          });
-        });
-      };
+      this.OMDBService.search({i: item.imdb_id}, (data) => {
+        item.details = data;
+        if(item.details.Actors !== "N/A" && item.details.Actors) {
+          this.actors = item.details.Actors.split(', ')
+        }
+        item.details.Poster === "N/A" || !item.details.Poster ? item.details.Poster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' : item.details.Poster
+      })
     });
+
+    this.user.tvShows.forEach(tvShow => {
+      this.TMDBservice.searchById(tvShow.imdb_id, 'tv', (data) => {
+        tvShow.details = data;
+        tvShow.poster = data.poster_path ? 'https://image.tmdb.org/t/p/w1280' + data.poster_path :
+                                        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
+      })
+    })
   });
-  //this line is bad too - MN
-  this.recommendations = this.recommendations.filter((item, i, arr) => item !== arr[i + 1])
 })
 .directive('app', function() { // directive name is the HTML tag name REMEMBER THIS
   return {
-    scope: {},
+    scope: {
+      user: '='
+    },
     restrict: 'E',
     controller: 'MainCtrl',
     controllerAs: 'ctrl',

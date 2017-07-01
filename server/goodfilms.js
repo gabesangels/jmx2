@@ -86,8 +86,9 @@ app.post('/signup', function (req, res) {
 app.post('/addMovie', function (req, res) {
   var user = req.body.user;
   var imdb_id = req.body.imdb_id;
+  var details = req.body.details;
 
-  accounts.insertMovieIntoWatched(user, {imdb_id: imdb_id, rating:'?', comment: 'N/A'});
+  accounts.insertMovieIntoWatched(user, {imdb_id: imdb_id, rating:'?', comment: 'N/A', details: details});
   res.sendStatus(200);
 
 });
@@ -96,8 +97,9 @@ app.post('/addTv', function (req, res) {
   console.log('inside /addTv')
   var user = req.body.user;
   var imdb_id = req.body.imdb_id;
+  var details = req.body.details
 
-  accounts.insertTvIntoWatched(user, {imdb_id: imdb_id, rating: '?', comment: 'N/A'});
+  accounts.insertTvIntoWatched(user, {imdb_id: imdb_id, rating: '?', comment: 'N/A', details: details});
   res.sendStatus(200);
 })
 
@@ -106,6 +108,14 @@ app.post('/addFavorite', function(req, res) {
   var movie = req.body.movie;
 
   accounts.toggleMovieFavorite(user, movie);
+  res.sendStatus(200);
+});
+
+app.post('/addTvFavorite', function(req, res) {
+  var user = req.body.user;
+  var tvShow = req.body.tvShow;
+
+  accounts.toggleMovieFavorite(user, tvShow);
   res.sendStatus(200);
 });
 
@@ -118,11 +128,28 @@ app.post('/addComment', function (req, res) {
   res.sendStatus(200);
 });
 
+app.post('/addTvComment', function (req, res) {
+  var user = req.body.user;
+  var imdb_id = req.body.imdb_id;
+  var comment = req.body.comment;
+
+  accounts.addCommentToWatchedTv(user, imdb_id, comment);
+  res.sendStatus(200);
+})
+
 app.post('/removeFromWatched', function (req, res) {
   var user = req.body.user;
   var imdb_id = req.body.imdb_id;
 
   accounts.removeMovieFromWatched(user, imdb_id);
+  res.sendStatus(200);
+});
+
+app.post('/removeFromTvWatched', function (req, res) {
+  var user = req.body.user;
+  var imdb_id = req.body.imdb_id;
+
+  accounts.removeTvFromWatched(user, imdb_id);
   res.sendStatus(200);
 });
 
@@ -134,6 +161,15 @@ app.post('/editRating', function (req, res) {
   accounts.addRatingToWatchedMovie(user, imdb_id, rating);
   res.sendStatus(200);
 });
+
+app.post('/editTvRating', function (req, res) {
+  var user = req.body.user;
+  var imdb_id = req.body.imdb_id;
+  var rating = req.body.rating;
+
+  accounts.addRatingToWatchedTv(user, imdb_id, rating);
+  res.sendStatus(200);
+})
 
 app.use('/*', function(req, res) {
   res.sendFile(__dirname.slice(0, __dirname.length - 6) + 'index.html');

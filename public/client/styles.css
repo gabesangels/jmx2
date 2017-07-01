@@ -180,6 +180,10 @@
   margin: 20px;
 }
 
+.user-additions {
+  height: 20%;
+}
+
 .movie-entry {
   padding: 20px 20px 20px 0;
 }
@@ -235,6 +239,7 @@
 .tv-summary {
   height: 80%;
   margin: auto;
+  overflow: scroll;
 }
 
 .movie-subhead {

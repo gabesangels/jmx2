@@ -14,7 +14,7 @@ angular.module('main-app')
     .then(function(res) {
       console.log('signed in');
       callback(null, res.data.apiToken);
-      $location.path('/user');
+      $location.path('/home');
     })
     .catch(function(err) {
       callback(err);
@@ -36,7 +36,7 @@ angular.module('main-app')
     .then(function() {
       console.log('signed up');
       signin(username, password, callback);
-      $location.path('/user');
+      $location.path('/home');
     })
     .catch(function(err) {
       callback(err);

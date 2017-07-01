@@ -22,6 +22,11 @@ angular.module('main-app', ['ngRoute'])
             templateUrl: 'public/client/templates/authPanel.html',
             controllerAs: 'ctrl'
         })
+        .when('/home', {
+            controller: 'HomeCtrl',
+            templateUrl: 'public/client/templates/home.html',
+            controllerAs: 'ctrl'
+        })
 
         .otherwise({ redirectTo: '/' });
 
@@ -37,9 +42,10 @@ angular.module('main-app', ['ngRoute'])
         // console.log('session is ', session);
         if ($location.$$path === '/user' && !session.data.user) {
           // session.user = {};
-          $location.path( "/login" );
+          // $location.path( "/login" );
+          // $location.path( "/home" );
         } else if (session.data.user) {
-          $location.path( "/user" );
+          // $location.path( "/user" );
         }
       });
       // if ( $rootScope.loggedUser == null ) {

@@ -2,7 +2,7 @@ angular.module('main-app')
 
 .factory('AuthModel', function($http, $location) {
   var storeURL = 'http://localhost:3000'; //<-- fix this *should be fixed* -JO
-  var signin = function(username, password, age, gender, callback) {
+  var signin = function(username, password, age, gender, postalCode, callback) {
     $http({
       url: `${storeURL}/signin`,
       method: 'POST',
@@ -21,7 +21,7 @@ angular.module('main-app')
     });
   };
 
-  var signup = function(username, password, age, gender, callback) {
+  var signup = function(username, password, age, gender, postalCode, callback) {
     $http({
       url: `${storeURL}/signup`,
       method: 'POST',
@@ -29,7 +29,8 @@ angular.module('main-app')
         username: username,
         password: password,
         age: age,
-        gender: gender
+        gender: gender,
+        postalCode: postalCode,
       }
     })
     .then(function() {

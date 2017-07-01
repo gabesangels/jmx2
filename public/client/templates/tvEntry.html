@@ -1,16 +1,17 @@
-<div class="tv-entry">
-    <img class="movie-entry-poster" ng-src="{{ctrl.tvShow.poster}}">
-    <div class="movie-entry-info">
-      <h4 class="movie-entry-title inline-block">{{ctrl.tvShow.details.name}}</h4>
+<div class="movie-entry col-xs-5 card">
+  <div class="card-contents">
+    <img class="movie-entry-poster" src="http://martjackassests.azureedge.net/css/themes/mjt02012429/images/main/show_loader.gif" 
+         ng-src="{{ctrl.tvShow.details.poster}}">
+    <div class="movie-entry-info card-block">
+      <h4 class="movie-entry-title inline-block card-title">{{ctrl.tvShow.details.name}}</h4>
 
       <div class="movie-info">
         <div class="year movie-subhead">First aired: {{ctrl.tvShow.details.first_air_date}} </div>
         <div class="rating movie-subhead">{{ctrl.tvShow.details.Rated || 'N/A'}}</div>
-        <div class="genre movie-subhead">{{ctrl.tvShow.details.genre[0].name}}</div>
         <div class="movie-staff">Director: {{ctrl.tvShow.details.created_by[0].name}}</div>
         <div class="movie-staff">Seasons: {{ctrl.tvShow.details.number_of_seasons}}</div>
         <br />
-        <div class="year movie-subhead">Summary: {{ctrl.tvShow.details.overview}} </div>
+        <div class="tv-summary">Summary: {{ctrl.tvShow.details.overview}} </div>
       </div>
     </div>
 
@@ -46,13 +47,13 @@
       </select>
     </div>
 
-    <div>
-      <button class="btn comment-element" id="remove-button" ng-click="ctrl.handleRemoveClick()">
+    <div col-xs-5>
+      <button class="btn btn-default comment-element" id="remove-button" ng-click="ctrl.handleRemoveClick()">
         <span>remove show</span>
       </button>
-      <button class="btn favorite-element comment-element" id="add-favorite-button" ng-click="ctrl.handleAddToFavorites()">
+      <button class="btn btn-default favorite-element comment-element" id="add-favorite-button" ng-click="ctrl.handleAddToFavorites()">
         <span>make favorite</span>
       </button>
     </div>
-
+  </div>
 </div>

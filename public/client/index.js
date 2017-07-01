@@ -28,7 +28,7 @@ angular.module('main-app', ['ngRoute'])
             controllerAs: 'ctrl'
         })
 
-        .otherwise({ redirectTo: '/' });
+        .otherwise({ redirectTo: '/login' });
 
     $locationProvider.html5Mode(true);
 })
@@ -40,12 +40,14 @@ angular.module('main-app', ['ngRoute'])
       $http.get('/userCheck').then( (session) => {
         // console.log('true?', $location.$$path === '/user' && !session.user);
         // console.log('session is ', session);
-        if ($location.$$path === '/user' && !session.data.user) {
+        if ($location.$$path === '/user' && session.data.user) {
           // session.user = {};
           // $location.path( "/login" );
-          // $location.path( "/home" );
-        } else if (session.data.user) {
-          // $location.path( "/user" );
+          $location.path( "/user" );
+        } else if ($location.$$path === '/home' && session.data.user) {
+          // session.user = {};
+          // $location.path( "/login" );
+          $location.path( "/home" );
         }
       });
       // if ( $rootScope.loggedUser == null ) {

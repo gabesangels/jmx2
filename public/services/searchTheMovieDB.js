@@ -55,7 +55,7 @@ angular.module('main-app')
         console.log('Error')
       });
     }
-    
+
   //this is used to get videos
   this.getVideos = function(id, callback) {
     $http({

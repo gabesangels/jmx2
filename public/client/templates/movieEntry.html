@@ -1,6 +1,6 @@
-<div class="movie-entry">
+<div class="movie-entry card col-xs-5">
 
-
+ <div class ="card-contents">
   <div class="movie-entry-info">
     <h4 class="movie-entry-title inline-block">{{ctrl.movie.details.Title || 'N/A'}}</h4>
     <img class="movie-entry-poster" src="http://martjackassests.azureedge.net/css/themes/mjt02012429/images/main/show_loader.gif" ng-src="{{ctrl.movie.details.Poster}}">
@@ -84,7 +84,8 @@
     <div class="writer">Writer: {{ctrl.movie.details.Writer}}</div>
     <div class="runtime">Runtime: {{ctrl.movie.details.Runtime}}</div>
     <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.video.results[0].key}}" allowFullScreen></iframe>
+      <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.details.video.results[0].key}}" allowFullScreen></iframe>
     </div>
   </div>
+</div>
 </div>

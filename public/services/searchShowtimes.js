@@ -2,7 +2,7 @@
 angular.module('main-app')
 .service('searchShowtimes', function($http){
   //please refactor this key
-  var API_KEYS = 'nmq2kzmegnz3uuc9gtwgms6c';
+  var API_KEYS = 'axm3q2btypg5pzjbec3bvttf';
   //this function make the url for the request
   var makeQueryString = function(url, params) {
     var paramsArray = []

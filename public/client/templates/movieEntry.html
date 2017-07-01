@@ -1,9 +1,9 @@
 <div class="movie-entry card col-xs-5">
 
  <div class ="card-contents">
+  <img class="movie-entry-poster" src="http://martjackassests.azureedge.net/css/themes/mjt02012429/images/main/show_loader.gif" ng-src="{{ctrl.movie.details.Poster}}">
   <div class="movie-entry-info">
     <h4 class="movie-entry-title inline-block">{{ctrl.movie.details.Title || 'N/A'}}</h4>
-    <img class="movie-entry-poster" src="http://martjackassests.azureedge.net/css/themes/mjt02012429/images/main/show_loader.gif" ng-src="{{ctrl.movie.details.Poster}}">
     <div class="movie-info">
       <div class="year movie-subhead">{{ctrl.movie.details.Year}} </div>
       <div class="rating movie-subhead">{{ctrl.movie.details.Rated}}</div>
@@ -76,16 +76,16 @@
       </button>
     </div>
   </div>
-  <div class="ng-hide" ng-hide="ctrl.details">
-    <h3>Details</h3>
-    <div class="plot">Plot: {{ctrl.movie.details.Plot}}</div>
-    <div class="awards">Awards: {{ctrl.movie.details.Awards}}</div>
-    <div class="production">Production: {{ctrl.movie.details.Production}}</div>
-    <div class="writer">Writer: {{ctrl.movie.details.Writer}}</div>
-    <div class="runtime">Runtime: {{ctrl.movie.details.Runtime}}</div>
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.details.video.results[0].key}}" allowFullScreen></iframe>
-    </div>
-  </div>
 </div>
+</div>
+<div class="ng-hide card col-xs-5" ng-hide="ctrl.details">
+  <h3>Details</h3>
+  <div class="plot">Plot: {{ctrl.movie.details.Plot}}</div>
+  <div class="awards">Awards: {{ctrl.movie.details.Awards}}</div>
+  <div class="production">Production: {{ctrl.movie.details.Production}}</div>
+  <div class="writer">Writer: {{ctrl.movie.details.Writer}}</div>
+  <div class="runtime">Runtime: {{ctrl.movie.details.Runtime}}</div>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" ng-src="{{'https://www.youtube.com/embed/' + ctrl.movie.details.video.results[0].key}}" allowFullScreen></iframe>
+  </div>
 </div>

@@ -91,6 +91,13 @@
   margin-bottom: 30px;
 }
 
+/******* HOME ******/
+
+.home {
+  width: 100%;
+  text-align: center;
+}
+
 /******* SEARCH MOVIE DROPDOWN ********/
 
 .dropbtn {

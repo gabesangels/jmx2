@@ -1,7 +1,7 @@
 <div>
-  <h1>Your reccomended movie for today!</h1>
+  <h1>Click below to see what's playing near you:</h1>
   <h2>{{ctrl.movie.title}}</h2>
-  <button ng-click="ctrl.handleSubmit()">Get movie times</button>
+  <button class="btn btn-success" ng-click="ctrl.handleSubmit()">Get movie times</button>
   <div>
     <showtime-entry query: "ctrl.query" showtime="showtime" ng-repeat="showtime in ctrl.showtimes" searchOMDB="ctrl.searchOMDB" searchTheMovieDB="ctrl.searchTheMovieDB" searchShowtimes="ctrl.searchShowtimes" />
   </div>

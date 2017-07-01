@@ -7,6 +7,7 @@ var accountSchema = mongoose.Schema({
   password: { type: String, required: true },
   age: { type: Number, required: true },
   gender: { type: String, required: true },
+  postalCode: { type: Number, required: true },
   movies: [],
   tvShows: [],
   toWatch: [Object]

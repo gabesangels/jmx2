@@ -27,6 +27,7 @@ angular.module('main-app') // copied mostly from ng-cast
           this.details = data;
           this.details.poster = data.poster_path ? 'https://image.tmdb.org/t/p/w1280' + data.poster_path :
                                                   'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
+          console.log('poster: ', this.details.poster)
           $http.post('/addTv', {user: this.user.username, imdb_id: this.imdb_id, details: this.details}).then(() => {
             $http.get('/sess').then((session) => {
               this.user.tvShows = session.data.tvShows;

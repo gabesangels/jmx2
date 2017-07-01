@@ -1,6 +1,6 @@
 .main-header {
   height: 160px;
-  background-image: url("templates/flashlight1.jpg");
+  background-image: url("templates/new_banner.jpg");
   background-size: 100%;
   padding: 50px 50px 50px 90px;
 }
@@ -84,6 +84,7 @@
 .container {
   height: 100%;
   position: relative;
+  width: 100%;
 }
 
 #main-search {
@@ -176,6 +177,7 @@
   height: 850px;
   width: 45%;
   margin: 22px;
+  background-color: white;
 }
 
 .showtime-card {

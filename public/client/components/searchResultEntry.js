@@ -8,36 +8,29 @@ angular.module('main-app') // copied mostly from ng-cast
     
     this.handleMovieClick = function() {
       this.TMDBservice.searchById(this.result.id, this.selection, (data) => {
-        this.imdb_id = data.imdb_id ? data.imdb_id : data.id
+        this.imdb_id = data.imdb_id ? data.imdb_id : data.id;
         
         if (this.selection === 'movie') {
-          
-          $http.post('/addMovie', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
-            $http.get('/sess').then((session) => {
+
+          //query OMDB
+          this.OMDBService.search({i: this.imdb_id}, (data) => {
+            this.details = data;
+            this.details.Poster === "N/A" || !this.details.Poster ? this.details.Poster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' : this.details.Poster;
+            $http.post('/addMovie', {user: this.user.username, imdb_id: this.imdb_id, details: this.details}).then(() => {
+              $http.get('/sess').then((session) => {
               this.user.movies = session.data.movies;
-            }).then(() => {
-              this.user.movies.forEach(movie => {
-                this.OMDBService.search({i: movie.imdb_id}, (data) => {
-                  movie.details = data;
-                  movie.details.Poster === "N/A" || !movie.details.Poster ? movie.details.Poster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png' : movie.details.Poster;
-                })
               })
-            });
-          });
-        }
-        else if (this.selection === 'tv') {
-          $http.post('/addTv', {user: this.user.username, imdb_id: this.imdb_id}).then(() => {
+            })
+          })
+         
+        } else if (this.selection === 'tv') {
+          this.details = data;
+          this.details.poster = data.poster_path ? 'https://image.tmdb.org/t/p/w1280' + data.poster_path :
+                                                  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
+          $http.post('/addTv', {user: this.user.username, imdb_id: this.imdb_id, details: this.details}).then(() => {
             $http.get('/sess').then((session) => {
               this.user.tvShows = session.data.tvShows;
-            }).then(() => {
-              this.user.tvShows.forEach(tvShow => {
-                this.TMDBservice.searchById(tvShow.imdb_id, 'tv', (data) => {
-                  tvShow.details = data;
-                  tvShow.poster = data.poster_path ? 'https://image.tmdb.org/t/p/w1280' + data.poster_path :
-                                                  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
-                })
-              })
-            });
+            })
           });
         }
       });

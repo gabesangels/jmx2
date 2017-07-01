@@ -86,8 +86,9 @@ app.post('/signup', function (req, res) {
 app.post('/addMovie', function (req, res) {
   var user = req.body.user;
   var imdb_id = req.body.imdb_id;
+  var details = req.body.details;
 
-  accounts.insertMovieIntoWatched(user, {imdb_id: imdb_id, rating:'?', comment: 'N/A'});
+  accounts.insertMovieIntoWatched(user, {imdb_id: imdb_id, rating:'?', comment: 'N/A', details: details});
   res.sendStatus(200);
 
 });
@@ -96,8 +97,9 @@ app.post('/addTv', function (req, res) {
   console.log('inside /addTv')
   var user = req.body.user;
   var imdb_id = req.body.imdb_id;
+  var details = req.body.details
 
-  accounts.insertTvIntoWatched(user, {imdb_id: imdb_id, rating: '?', comment: 'N/A'});
+  accounts.insertTvIntoWatched(user, {imdb_id: imdb_id, rating: '?', comment: 'N/A', details: details});
   res.sendStatus(200);
 })
 

@@ -2,5 +2,5 @@
   <h4>Theatre: {{ctrl.showtime.theatre.name}}</h2>
   <h4>Time: {{ctrl.dateTime}}</h2>
   <!-- <time datetime={{ctrl.showtime.dateTime}}>Day and time</time> -->
-  <h4>Get tickets: if available click link => <a href={{ctrl.showtime.ticketURI}}>Tickets</a></h2>
+  <h4>Get tickets: if available click link => <a href="{{ctrl.showtime.ticketURI ? ctrl.showtime.ticketURI : 'http://www.fandango.com' }}">Tickets</a></h2>
 </div>
